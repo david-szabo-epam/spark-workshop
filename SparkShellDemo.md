@@ -60,6 +60,7 @@ val evenNumbersLambdaDS = numbersDS.filter(v => v % 2 == 0)
 evenNumbersLambdaDS.collect
 
 ```
+> **NOTE:** To run the following code samples you will need the [persons.json](persons.json) file from this repository placed in the location you are running the spark-shell.
 
 ## Structured data
 
