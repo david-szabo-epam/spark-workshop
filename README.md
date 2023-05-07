@@ -10,24 +10,9 @@ This workshop uses two approaches for running Spark:
 
 ## Running Spark from the command line
 
-We provided a VM that has all dependencies pre-installed for spark shell.
-
-### Using the VM
-
-Spark uses the available CPU cores for parallelization. Make sure that you have
-more than 1 CPUs assigned to your VirtualBox image.
-
-![CPU count](img/vm-cpu.png)
-
-Running the examples directly (without VM) is also possible after installing Spark.
-
-### Running the samples
-
 Open a terminal window and start the spark console:
 
 ```bash
-# Go to the source folder
-cd ~/code/spark-workshop/
 # Start Spark Shell
 spark-shell
 ```
@@ -36,6 +21,8 @@ Find the address of the Spark context Web UI in the output lines
 and open it in a browser (It should be something like http://10.0.2.15:4040).
 
 Open the [Spark shell demo](./SparkShellDemo.md) documentation.
+
+For some of the examples to run successfully you will need files from this repository and place them in the fodler where you executed Spark.
 
 ## Run the Scala code
 
