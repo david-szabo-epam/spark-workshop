@@ -89,6 +89,8 @@ val personsDS = personsDF.as[Person]
 
 val namesDS = personsDS.filter(_.age > 35).map(p => (p.name.first, p.name.last))
 
+namesDS.show()
+
 // Open the UI and check the execution for both cases in the SQL tab
 ```
 
@@ -129,34 +131,4 @@ namesSql.collect
 namesDF.collect
 
 //check UI SQL - compare the execution plans
-```
-
-## A Tale of Two Word counts
-
-### RDD
-
-```scala
-val wordCount = sc
-    .textFile("nobel-laureates.csv")  // RDD of lines
-    .flatMap(line => line.split(Array(' ', ',', '"')))
-    .filter(word => word.nonEmpty)
-    .map(word => (word, 1))
-    .reduceByKey((a, b) => a + b)
-    .filter(pair => pair._2 > 60)
-    .collect
-```
-
-### DataFrame
-
-```scala
-val wordCount = spark.read.text("nobel-laureates.csv")
-	.select(
-		explode(
-			split(col("value"), "[, \"]")
-		).as("word"))
-	.filter("word != ''")
-	.groupBy("word")
-	.count()
-	.filter("count > 60")
-	.collect
 ```
